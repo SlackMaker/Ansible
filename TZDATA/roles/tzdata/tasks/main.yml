@@ -1,0 +1,41 @@
+---
+  - name: "Check tzdata"
+    package_facts:
+      manager: "auto"
+
+  - name: Procedimento para realizar a copia do TZDATA no RedHat 6
+    copy: src=tzdata-java-2019c-1.el6.noarch.rpm dest=/tmp/
+    when: ('tzdata-java' in ansible_facts.packages) and (ansible_os_family == "RedHat") and (ansible_facts['distribution_major_version'] == "6")
+
+
+  - name: Instalando o pacote tzdata
+    yum:
+      name: /tmp/tzdata-java-2019c-1.el6.noarch.rpm
+      state: present
+    when: ('tzdata-java' in ansible_facts.packages) and (ansible_os_family == "RedHat") and (ansible_facts['distribution_major_version'] == "6")
+
+  - name: Testando o zdump
+    shell: zdump -v /usr/share/zoneinfo/America/Sao_Paulo | grep 2019
+    register: zdump_output
+  - debug:
+      var: zdump_output.stdout
+
+
+
+  - name: Procedimento para realizar a copia do TZDATA no RedHat 7
+    copy: src=tzdata-java-2019c-1.el7.noarch.rpm dest=/tmp/
+    when: ('tzdata-java' in ansible_facts.packages) and (ansible_os_family == "RedHat") and (ansible_facts['distribution_major_version'] == "7")
+
+
+  - name: Instalando o pacote tzdata
+    yum:
+      name: /tmp/tzdata-java-2019c-1.el7.noarch.rpm
+      state: present
+    when: ('tzdata-java' in ansible_facts.packages) and (ansible_os_family == "RedHat") and (ansible_facts['distribution_major_version'] == "7")
+
+  - name: Testando o zdump
+    shell: zdump -v /usr/share/zoneinfo/America/Sao_Paulo | grep 2019
+    register: zdump_output
+  - debug:
+      var: zdump_output.stdout
+# tasks file for tzdata

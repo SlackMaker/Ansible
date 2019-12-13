@@ -1,0 +1,7 @@
+---
+  - hosts: ACL
+    remote_user: usuario
+    become: yes
+
+    roles:
+       - playacl     

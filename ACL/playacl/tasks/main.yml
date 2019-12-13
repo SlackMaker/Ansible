@@ -1,0 +1,29 @@
+---
+- name: Concede ao usuario, permissao de leitura, escrita e gravacao para a pasta
+  acl:
+    path: '{{ item.path }}'
+    entity: '{{ item.entity }}'
+    etype: user
+    permissions: rwx
+    state: present
+  with_items:
+    - { path: '{{ caminho }}', entity: '{{ usuario }}' }
+
+
+- name: Concede ao grupo, permissao de leitura, escrita e gravacao para a pasta
+  acl:
+    path: '{{ item.path }}'
+    entity: '{{ item.entity }}'
+    etype: group
+    permissions: rwx
+    state: present
+  with_items:
+    - { path: '{{ caminho }}', entity: '{{ usuario }}' }
+
+- name: Obtem ACL de um arquivo especifico
+  acl:
+    path: '{{ item }}'
+    register: acl_info
+  with_items:
+    - '{{ caminho }}'
+# tasks file for acl
