@@ -1,0 +1,4 @@
+---
+  - name: Resetando senha de e-mail no Zimbra
+    shell: sudo su - zimbra -c '/opt/zimbra/bin/zmprov sp {{ email }} {{ senha }} '
+    shell: sudo su - zimbra -c '/opt/zimbra/bin/zmprov ma {{ email }} zimbraPasswordMustChange TRUE - zimbra'

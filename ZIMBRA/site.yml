@@ -1,0 +1,7 @@
+---
+  - hosts: ZIMBRA
+    remote_user: usuario
+    become: yes
+
+    roles:
+      - zimbra
