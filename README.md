@@ -14,7 +14,7 @@ A **IaC** tem o conceito de provisionar e dar suporte à infraestrutura de compu
 **Seguem os passos abaixo para realizar o clone**
 
 
-1. `# git clone https://git.datainfo.inf.br/datainfo/iac.git` - Clonar o repositório
+1. `# git clone https://github.com/SlackMaker/Ansible.git` - Clonar o repositório
 2. `# cd iac` - Entrar no diretório clonado
 3. `# git checkout -b nome-da-nova-branch` - Crie uma nova branch, exemplo: feature/nova-funcionalidade ou bugfix/corrigir-erro, faça suas alterações, funcionalidades, etc...
 4. `# git add .` - Adiciona os arquivos na stage
