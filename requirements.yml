@@ -1,0 +1,11 @@
+collections:
+  - ansible.posix
+  - ansible.utils
+  - community.general
+  - ansible.windows
+  - community.windows
+  - community.docker
+  - community.hashi_vault
+  - name: https://github.com/ansible-collections/community.zabbix.git
+    type: git
+    branch: master

@@ -1,0 +1,12 @@
+ansible
+molecule
+molecule-docker
+yamllint
+ansible-lint
+hvac
+pywinrm
+wheel
+python-jenkins
+netaddr
+zabbix-api
+dnspython
