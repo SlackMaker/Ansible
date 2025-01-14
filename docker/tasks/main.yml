@@ -1,0 +1,33 @@
+---
+- name: Adicionar repositório do Docker
+  ansible.builtin.template:
+    src: docker.repo.j2
+    dest: /etc/yum.repos.d/docker.repo
+  become: yes
+
+- name: Instalar pacotes do Docker-CE
+  ansible.builtin.yum:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present
+  become: yes
+
+- name: Iniciar e habilitar o serviço Docker
+  ansible.builtin.systemd:
+    name: docker
+    state: started
+    enabled: yes
+  become: yes
+
+- name: Verificar a instalação do Docker
+  ansible.builtin.command:
+    cmd: docker --version
+  register: docker_version
+  failed_when: docker_version.rc != 0
+
+- name: Exibir a versão do Docker
+  ansible.builtin.debug:
+    msg: "Docker versão: {{ docker_version.stdout }}"
+

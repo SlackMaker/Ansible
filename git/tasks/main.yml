@@ -1,0 +1,7 @@
+---
+- name: Instalar Git
+  ansible.builtin.yum:
+    name: git
+    state: present
+  become: yes
+

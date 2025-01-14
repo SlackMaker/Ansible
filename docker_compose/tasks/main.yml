@@ -1,0 +1,18 @@
+---
+- name: Baixar a versão mais recente do Docker Compose
+  ansible.builtin.get_url:
+    url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-linux-x86_64"
+    dest: /usr/local/bin/docker-compose
+    mode: 'u+x'
+  become: yes
+
+- name: Verificar a versão do Docker Compose
+  ansible.builtin.command:
+    cmd: /usr/local/bin/docker-compose --version
+  register: docker_compose_version_output
+  failed_when: docker_compose_version_output.rc != 0
+
+- name: Exibir a versão do Docker Compose
+  ansible.builtin.debug:
+    msg: "Docker Compose versão: {{ docker_compose_version_output.stdout }}"
+
