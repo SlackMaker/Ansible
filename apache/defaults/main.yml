@@ -1,0 +1,9 @@
+---
+# defaults/main.yml
+
+apache_package: apache2
+apache_state: started
+apache_enabled: yes
+apache_port: 80
+apache_config_file: /etc/apache2/apache2.conf
+

@@ -1,0 +1,9 @@
+---
+# vars/main.yml
+
+apache_package: apache2          # Nome do pacote do Apache
+apache_state: started            # Estado do serviço (started, stopped, restarted)
+apache_enabled: yes              # Habilitar o Apache para iniciar na inicialização
+apache_port: 8080                # Porta que o Apache deve escutar
+apache_config_file: /etc/apache2/apache2.conf  # Caminho do arquivo de configuração do Apache
+

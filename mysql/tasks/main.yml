@@ -1,0 +1,47 @@
+# roles/mysql/tasks/main.yml
+
+---
+- name: Atualizar pacotes do sistema
+  apt:
+    update_cache: yes
+    cache_valid_time: 3600  # Cache válido por 1 hora
+
+- name: Instalar o MySQL
+  apt:
+    name: "{{ mysql_package }}"
+    state: present
+
+- name: Garantir que o serviço MySQL esteja em execução
+  service:
+    name: "{{ mysql_service }}"
+    state: started
+    enabled: yes
+
+- name: Definir a senha do usuário root do MySQL
+  mysql_user:
+    name: root
+    password: "{{ mysql_root_password }}"
+    host: localhost
+    state: present
+    login_unix_socket: /var/run/mysqld/mysqld.sock
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+
+- name: Copiar o arquivo de configuração do MySQL (my.cnf)
+  template:
+    src: my.cnf.j2
+    dest: "{{ mysql_config_file }}"
+    owner: root
+    group: root
+    mode: '0644'
+
+      #- name: Garantir que o MySQL esteja seguro (configurações adicionais)
+      #  mysql_db:
+      #    name: mysql
+      #    state: import
+      #    target: /etc/mysql/mysql.conf.d/mysql.cnf  # Caminho do arquivo de configuração
+      #    login_user: root
+      #    login_password: "{{ mysql_root_password }}"
+      #    login_host: localhost
+      #    login_port: 3306
+

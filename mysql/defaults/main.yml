@@ -1,0 +1,5 @@
+# roles/mysql/defaults/main.yml
+
+mysql_package: "mysql-server"
+mysql_service: "mysql"
+

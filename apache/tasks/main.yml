@@ -1,0 +1,19 @@
+---
+# tasks/main.yml
+
+- name: Instalar Apache
+  apt:
+    name: apache2
+    state: present
+
+- name: Copiar o template HTML para o servidor
+  template:
+    src: index.html.j2       # O template que você criou
+    dest: /var/www/html/index.html   # Caminho onde o arquivo será copiado no servidor
+
+- name: Garantir que o Apache esteja em execução
+  service:
+    name: apache2
+    state: started
+    enabled: yes
+

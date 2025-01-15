@@ -1,0 +1,7 @@
+---
+- name: Instalar e configurar Apache com variáveis
+  hosts: all
+  become: yes
+  roles:
+    - apache
+

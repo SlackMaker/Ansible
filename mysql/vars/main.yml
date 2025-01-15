@@ -1,0 +1,6 @@
+---
+mysql_root_password: "q1w2e3r4"
+mysql_package: "mysql-server"
+mysql_service: "mysql"
+mysql_config_file: "/etc/mysql/mysql.conf.d/mysqld.cnf"
+

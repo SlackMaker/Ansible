@@ -1,0 +1,8 @@
+---
+# handlers/main.yml
+
+- name: Reiniciar o Apache
+  service:
+    name: "{{ apache_package }}"
+    state: restarted
+
