@@ -1,6 +1,6 @@
 # IaC - (Infraestrura como Código)
 
-# Conceito
+## Conceito
 A **IaC** tem o conceito de provisionar e dar suporte à infraestrutura de computação usando código em vez de configurações e processos manuais. Todo ambiente de aplicações requer muitos componentes de infraestrutura, como sistemas operacionais, conexões de banco de dados e armazenamento.
 
 **Como trabalhar com seus códigos:**
@@ -28,3 +28,8 @@ A **IaC** tem o conceito de provisionar e dar suporte à infraestrutura de compu
 9. `# git checkout main`
 
 10. `# git pull origin main`
+
+## Observações
+- Este projeto está atualizado com um [playbook para instalar o PHP](/Ansible/install_php.yml) para oferecer alguma opção ao usuário que prefere trabalhar usando **LAMP**.
+    - Confira o arquivo [install_php_readme](/Ansible/install_php_readme.md) para inteirar-se dos detalhes do playbook do PHP. 
+    - O [playbook para instalar o PHP](/Ansible/install_php.yml) foi escrito com assistência de *Inteligência Artificial*.
