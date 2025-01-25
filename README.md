@@ -30,6 +30,6 @@ A **IaC** tem o conceito de provisionar e dar suporte à infraestrutura de compu
 10. `# git pull origin main`
 
 ## Observações
-- Este projeto está atualizado com um [playbook para instalar o PHP](/Ansible/install_php.yml) para oferecer alguma opção ao usuário que prefere trabalhar usando **LAMP**.
+- Este projeto está atualizado com um [playbook para instalar o PHP](./install_php.yml) para oferecer alguma opção ao usuário que prefere trabalhar usando **LAMP**.
     - Confira o arquivo [install_php_readme](./install_php_readme.md) para inteirar-se dos detalhes do playbook do PHP. 
     - O [playbook para instalar o PHP](./install_php.yml) foi escrito com assistência de *Inteligência Artificial*.
