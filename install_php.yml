@@ -1,0 +1,45 @@
+---
+- name: Instalar e configurar PHP
+  hosts: all
+  become: yes  # Usar sudo para tarefas que precisam de privilégios de root
+  vars:
+    php_version: "php8.1"  # Altere para a versão do PHP que deseja instalar, ex: php7.4 ou php8.0
+    php_extensions:
+      - php-cli
+      - php-fpm
+      - php-mysql
+      - php-curl
+      - php-xml
+      - php-mbstring
+      - php-zip
+
+  tasks:
+    - name: Atualizar repositórios do sistema
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Instalar PHP e extensões
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ php_extensions }}"
+
+    - name: Instalar PHP-FPM (FastCGI Process Manager)
+      apt:
+        name: "{{ php_version }}-fpm"
+        state: present
+
+    - name: Iniciar o serviço PHP-FPM
+      service:
+        name: "{{ php_version }}-fpm"
+        state: started
+        enabled: yes
+
+    - name: Verificar versão do PHP
+      command: php -v
+      register: php_version_output
+
+    - name: Exibir versão do PHP instalada
+      debug:
+        msg: "A versão do PHP instalada é: {{ php_version_output.stdout }}"
